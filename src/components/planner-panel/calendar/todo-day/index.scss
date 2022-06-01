@@ -1,0 +1,68 @@
+.todo-day {
+  width: 300px;
+  height: 60%;
+  min-height: 250px;
+  padding: 20px;
+  font-size: 2em;
+  background-color: #263238;
+  border-radius: 5px 5px 0 0;
+  color: #FFFFFF;
+
+  h3 {
+    letter-spacing: 2px;
+    font-size: 30px;
+  }
+
+  h4 {
+    letter-spacing: 2px;
+  }
+
+  p {
+    color: #FFFFFF;
+    font-size: 24px;
+    padding-bottom: 5px;
+  }
+
+  .todo-list {
+    max-height: 79%;
+    overflow: auto;
+  }
+
+  .todo-list::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .todo-list::-webkit-scrollbar-track {
+    background-color: #949494;
+    border-radius: 8px;
+  }
+
+  .todo-list::-webkit-scrollbar-thumb {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+  }
+
+  #today-note {
+    font-size: 15px;
+    white-space: pre-line;
+  }
+}
+
+.input-field label, .input-field input {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+input[type=text]:focus:not([readonly]), input[type=text]:focus:not([readonly]) + label {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.filled-in + label {
+  color: #fff;
+}
+
+[type="checkbox"].filled-in:checked + label:after {
+  border: 2px solid #7C4DFF;
+  background-color: #7C4DFF;
+}
