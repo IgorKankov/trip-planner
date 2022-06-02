@@ -5,7 +5,8 @@
   color: #FFF;
   line-height: 34px;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
+  border-radius: 50%;
 }
 
 .day {
@@ -20,17 +21,17 @@
 
 .today {
   background-color: #448AFF;
-  border-radius: 50%;
   color: #000000;
-  font-weight: 500;
 }
 
 .note {
-  cursor: pointer;
   background-color: #7C4DFF;
-  border-radius: 50%;
   color: #000000;
-  font-weight: 500;
+}
+
+.selected-day {
+  background-color: #808080;
+  color: #000000;
 }
 
 .clear {

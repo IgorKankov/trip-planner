@@ -8,7 +8,7 @@ const sameDate = (date1, date2) => (
   date1.getFullYear() === date2.getFullYear()
 )
 
-const MonthsDays = ({date, handleDay, notes}) => {
+const MonthsDays = ({todoDate, date, handleDay, notes}) => {
   let actualDate = new Date(date.getTime())
   actualDate.setDate(1)
 
@@ -47,17 +47,18 @@ const MonthsDays = ({date, handleDay, notes}) => {
     <div className='day-container'>
       {calendar.map((day, index) => {
         let notesDay = `${day.number}/${noteMonth.getMonth() + 1}/${noteMonth.getFullYear()}`
+        const selectedDay = notesDay === todoDate ? ' selected-day' : ''
         return day.number !== null
-          ? <div key={index} onClick={handleDay} data-value={notesDay} className={day.dayClass}>{day.number}</div>
+          ? <div key={index} onClick={handleDay} data-value={notesDay} className={day.dayClass + selectedDay}>{day.number}</div>
           : <div key={index} className={day.dayClass} />
       })}
     </div>
   )
 }
 MonthsDays.propTypes = {
-  // date: object.isRequired,
+  date: object.isRequired,
   handleDay: func.isRequired,
-  // notes: array.isRequired
+  notes: array.isRequired
 }
 
 export default MonthsDays

@@ -1,60 +1,54 @@
 import React from 'react'
-import { func, string, array, object } from 'prop-types'
-import {useSelector, useDispatch} from "react-redux";
+import {func, string, array, object, bool} from 'prop-types'
 import './index.scss'
 import TodoDay from "./todo-day";
 import ChangeMonth from "./change-month";
 import WeekDays from "./week-days";
 import MonthsDays from './months-days'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
- import { increment, decrement, todoDateAction, addNote, completeNote } from '../store/actions'
+import {increment, decrement, todoDateAction, addNote, completeNote} from '../store/actions'
 
 
 const Calendar = (props) => {
-  const todoDate = useSelector(state => state.plannerPanelReducer.todoDate);
-  const notes = useSelector(state => state.plannerPanelReducer.notes);
-  let date = useSelector(state => state.plannerPanelReducer.date);
-  const panelIsVisible = useSelector(state => state.plannerPanelReducer.panelIsVisible)
-  const dispatch = useDispatch()
-
-  const handleDay = ({ target }) => {
+  const handleDay = ({target}) => {
     let todoDate = target.getAttribute('data-value')
-    dispatch(todoDateAction(todoDate))
+    props.changeTodoDate(todoDate)
   }
 
-  const handleNoteKeyPress = ({ target, key }) => {
+  const handleNoteKeyPress = ({target, key}) => {
     if (key === 'Enter' && target.value !== '') {
-      dispatch(addNote(todoDate, target.value))
+      props.addNote(props.todoDate, target.value)
       target.value = ''
     }
   }
 
-  const handleCompleted = ({ target }) => {
+  const handleCompleted = ({target}) => {
     let id = target.id
-    setTimeout(() => dispatch(completeNote(id)), 700)
+    setTimeout(() => props.completeNote(id), 700)
   }
 
   return (
-    <div className={`planner${!panelIsVisible ? ' planner-hidden' : ''}`}>
+    <div className={`planner${!props.panelIsVisible ? ' planner-hidden' : ''}`}>
       <TodoDay
-        todoDate={todoDate}
+        todoDate={props.todoDate}
         handleNoteKeyPress={handleNoteKeyPress}
-        notes={notes}
+        notes={props.notes}
         handleCompleted={handleCompleted}
       />
       <div className='calendar-container'>
         <ChangeMonth
           handleDateUp={props.increment}
           handleDateDown={props.decrement}
-          date={date}
+          date={props.date}
         />
         <div className='full-calendar'>
-          <WeekDays />
+          <WeekDays/>
           <MonthsDays
-            date={date}
+            todoDate={props.todoDate}
+            date={props.date}
             handleDay={handleDay}
-            notes={notes} />
+            notes={props.notes}/>
         </div>
       </div>
     </div>
@@ -69,18 +63,23 @@ Calendar.propTypes = {
   decrement: func.isRequired,
   changeTodoDate: func.isRequired,
   addNote: func.isRequired,
-  completeNote: func.isRequired
+  completeNote: func.isRequired,
+  panelIsVisible: bool
 }
 
-const mapStateToProps = ({ notes, date, todoDate }) => ({
-  notes,
-  date,
-  todoDate
+const mapStateToProps = (state) => ({
+  notes: state.plannerPanelReducer.notes,
+  date: state.plannerPanelReducer.date,
+  todoDate: state.plannerPanelReducer.todoDate,
+  panelIsVisible: state.plannerPanelReducer.panelIsVisible
 })
 
 const mapDispatchToProps = (dispatch) => ({
   increment: () => dispatch(increment()),
   decrement: () => dispatch(decrement()),
+  completeNote: (id) => dispatch(completeNote(id)),
+  changeTodoDate: (todoDate) => dispatch(todoDateAction(todoDate)),
+  addNote: (date, description) => dispatch(addNote(date, description))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calendar)
