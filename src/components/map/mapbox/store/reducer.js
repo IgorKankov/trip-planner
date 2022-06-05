@@ -5,9 +5,9 @@ import {
 } from "./constants";
 
 const INITIAL_STATE = {
-  lat: 42.35,
-  lng: -70.9,
-  zoom: 9
+  lat: 49.8415,
+  lng: 24.0318,
+  zoom: 12
 }
 
 const mapReducer = (state = INITIAL_STATE, action) => {

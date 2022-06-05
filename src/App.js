@@ -1,5 +1,5 @@
 import './App.css';
-import Map from './components/mapbox/mapbox-container'
+import Map from './components/map/mapbox/mapbox-container'
 import Planner from "./components/planner-panel/planner";
 
 function App() {
