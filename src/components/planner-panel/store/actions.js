@@ -1,5 +1,5 @@
 import {
-  SET_PANEL_VISIBILITY,
+  SET_PLANNER_PANEL_VISIBILITY,
   INCREMENT,
   DECREMENT,
   TODO_DATE,
@@ -7,11 +7,11 @@ import {
   COMPLETE_NOTE
 } from "./constants";
 
-export const setVisibility = (value) => {
+export const setPlannerVisibility = (value) => {
   return {
-    type: SET_PANEL_VISIBILITY,
+    type: SET_PLANNER_PANEL_VISIBILITY,
     payload: {
-      panelIsVisible: value
+      plannerPanelIsVisible: value
     }
   }
 }

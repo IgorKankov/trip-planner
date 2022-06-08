@@ -1,5 +1,5 @@
 import {
-  SET_PANEL_VISIBILITY,
+  SET_PLANNER_PANEL_VISIBILITY,
   INCREMENT,
   DECREMENT,
   TODO_DATE,
@@ -12,7 +12,7 @@ const initialTodoDate = `${new Date().getDate()}/${new Date().getMonth() + 1}/${
 const initialDate = new Date()
 
 const INITIAL_STATE = {
-  panelIsVisible: true,
+  plannerPanelIsVisible: true,
   todoDate: initialTodoDate,
   date: initialDate,
   notes: NOTES
@@ -20,9 +20,9 @@ const INITIAL_STATE = {
 
 const plannerPanelReducer = (state = INITIAL_STATE, {type, payload}) => {
   switch (type) {
-    case SET_PANEL_VISIBILITY:
+    case SET_PLANNER_PANEL_VISIBILITY:
       return {
-        ...state, panelIsVisible: payload.panelIsVisible
+        ...state, plannerPanelIsVisible: payload.plannerPanelIsVisible
       };
     case INCREMENT:
       let increment = new Date(state.date.getTime())

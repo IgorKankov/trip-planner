@@ -29,7 +29,7 @@ const Calendar = (props) => {
   }
 
   return (
-    <div className={`planner${!props.panelIsVisible ? ' planner-hidden' : ''}`}>
+    <div className={`planner${!props.plannerPanelIsVisible ? ' planner-hidden' : ''}`}>
       <TodoDay
         todoDate={props.todoDate}
         handleNoteKeyPress={handleNoteKeyPress}
@@ -64,14 +64,14 @@ Calendar.propTypes = {
   changeTodoDate: func.isRequired,
   addNote: func.isRequired,
   completeNote: func.isRequired,
-  panelIsVisible: bool
+  plannerPanelIsVisible: bool
 }
 
 const mapStateToProps = (state) => ({
   notes: state.plannerPanelReducer.notes,
   date: state.plannerPanelReducer.date,
   todoDate: state.plannerPanelReducer.todoDate,
-  panelIsVisible: state.plannerPanelReducer.panelIsVisible
+  plannerPanelIsVisible: state.plannerPanelReducer.plannerPanelIsVisible
 })
 
 const mapDispatchToProps = (dispatch) => ({

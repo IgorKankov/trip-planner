@@ -2,8 +2,7 @@ import React, {useRef, useEffect} from 'react';
 import {connect} from "react-redux";
 import mapboxgl from 'mapbox-gl';
 import Coordinates from "../coordinates-info/coordinates";
-import GeocodingInput from "../geocoding-input";
-import {setLat, setLng, setZoom} from "./store/actions";
+import {setLat, setLng, setZoom} from "../store/actions";
 import configs from '../../../config/development.json';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -66,7 +65,6 @@ const Map = (props) => {
   return (
     <div className='map'>
       <div ref={mapContainer} className="map-container"/>
-      <GeocodingInput/>
       <Coordinates lng={props.lng} lat={props.lat} zoom={props.zoom}/>
     </div>
   )

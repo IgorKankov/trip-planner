@@ -2,18 +2,18 @@ import React from "react";
 import {useSelector} from "react-redux";
 import classNames from "classnames";
 import './planner.scss'
-import VisibilityButton from "./planner-visibility-button";
+import VisibilityButton from "../visibility-button";
 import Calendar from "./calendar";
 
 const Planner = () => {
-  const panelIsVisible = useSelector(state => state.plannerPanelReducer.panelIsVisible)
+  const plannerPanelIsVisible = useSelector(state => state.plannerPanelReducer.plannerPanelIsVisible)
   const classes = classNames({
     'planner-panel': true,
-    'panel-hidden': !panelIsVisible
+    'panel-hidden': !plannerPanelIsVisible
   })
   return (
     <aside className={classes}>
-      <VisibilityButton />
+      <VisibilityButton plannerVisibilityBtn={true}/>
       <Calendar />
     </aside>
   )

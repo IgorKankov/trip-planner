@@ -1,0 +1,15 @@
+.navigation-panel {
+  position: absolute;
+  top: 50px;
+  bottom: 50px;
+  left: 10px;
+  width: 300px;
+  background-color: #23374b;
+  border-radius: 5px;
+  padding: 20px;
+
+  &.panel-hidden {
+    width: 0;
+    padding: 0;
+  }
+}

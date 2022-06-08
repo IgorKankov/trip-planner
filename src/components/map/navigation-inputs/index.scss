@@ -1,0 +1,7 @@
+.fields-container {
+  position: relative;
+
+  &.container-is-hidden {
+    display: none;
+  }
+}
