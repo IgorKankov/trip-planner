@@ -1,7 +1,7 @@
 import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
 import  createSagaMiddleware from 'redux-saga'
 import rootReducer from "./reducers/root-reducer";
-import rootSaga from "./sagas/root-saga";
+import index from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -11,4 +11,4 @@ export default configureStore({
   middleware: [...getDefaultMiddleware({thunk: false, serializableCheck: false}), sagaMiddleware]
 });
 
-sagaMiddleware.run(rootSaga)
+sagaMiddleware.run(index)

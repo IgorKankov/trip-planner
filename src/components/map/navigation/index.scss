@@ -11,5 +11,9 @@
   &.panel-hidden {
     width: 0;
     padding: 0;
+
+    .rout-btn {
+      display: none;
+    }
   }
 }

@@ -4,7 +4,9 @@ import {
   SET_ZOOM,
   SET_START_POINT,
   SET_END_POINT,
-  SET_NAVIGATION_VISIBILITY
+  SET_NAVIGATION_VISIBILITY,
+  GET_GEOJSON,
+  SET_GEOJSON
 } from "./constants";
 
 export const setLat = (lat) => {
@@ -28,23 +30,25 @@ export const setZoom = (zoom) => {
   }
 };
 
-export const setStartPoint = (lon, lat) => ({
+export const setStartPoint = (coordinates) => ({
   type: SET_START_POINT,
-  payload: {
-    lon,
-    lat
-  }
+  payload: coordinates
 });
 
-export const setEndPoint = (lon, lat) => ({
+export const setEndPoint = (coordinates) => ({
   type: SET_END_POINT,
-  payload: {
-    lon,
-    lat
-  }
+  payload: coordinates
 });
 
 export const setNavigationVisibility = (value) => ({
   type: SET_NAVIGATION_VISIBILITY,
   payload: value
+});
+
+export const getGeoJSON = () => ({
+  type: GET_GEOJSON
+});
+export const setGeoJSON = (geojson) => ({
+  type: SET_GEOJSON,
+  payload: geojson
 });
