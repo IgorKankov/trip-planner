@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import env from "react-dotenv";
 import geocodingService from "../../../services/geocodingService";
 import {useDispatch} from "react-redux";
 import {setStartPoint, setEndPoint} from "../store/actions";
@@ -52,13 +51,13 @@ const NavigationInputs = ({navigationPanelIsVisible}) => {
     <div className={classes}>
       <form>
         <div className={`input-field`}>
-          <AddressAutofill accessToken={env.MAPBOX_KEY}>
+          <AddressAutofill accessToken={process.env.REACT_APP_MAPBOX_KEY}>
             <input type="text" name="start-point" id="start-point" autoComplete="address-line1" onChange={handleStartPoint}/>
             <label htmlFor='start-point'>Enter Start Point</label>
           </AddressAutofill>
         </div>
         <div className={`input-field`}>
-          <AddressAutofill accessToken={env.MAPBOX_KEY}>
+          <AddressAutofill accessToken={process.env.REACT_APP_MAPBOX_KEY}>
             <input type="text" name="end-point" id="end-point" autoComplete="address-line1" onChange={handleEndPoint}/>
             <label htmlFor='end-point'>Enter End Point</label>
           </AddressAutofill>

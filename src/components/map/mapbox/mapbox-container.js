@@ -1,13 +1,12 @@
 import React, {useRef, useEffect} from 'react';
 import {connect, useSelector} from "react-redux";
-import env from "react-dotenv";
 import mapboxgl from 'mapbox-gl';
 import Coordinates from "../coordinates-info/coordinates";
 import {setLat, setLng, setZoom} from "../store/actions";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import ('./index.scss');
 
-mapboxgl.accessToken = env.MAPBOX_KEY;
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
 
 const Map = (props) => {
   const mapContainer = useRef(null);

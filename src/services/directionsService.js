@@ -1,9 +1,8 @@
-import env from "react-dotenv";
 import mapboxApi from "./mapboxApi";
 
 const directionsService = async (coordinates) => {
   const query = await fetch(
-    mapboxApi(`/directions/v5/mapbox/driving/${coordinates}?alternatives=true&geometries=geojson&language=en&overview=simplified&steps=true&access_token=${env.MAPBOX_KEY}`),
+    mapboxApi(`/directions/v5/mapbox/driving/${coordinates}?alternatives=true&geometries=geojson&language=en&overview=simplified&steps=true&access_token=${process.env.REACT_APP_MAPBOX_KEY}`),
     {method: 'GET'}
   )
 
@@ -18,7 +17,6 @@ const directionsService = async (coordinates) => {
       coordinates: route
     }
   };
-  console.log('res', response)
   if (query.ok) return geojson
 }
 
